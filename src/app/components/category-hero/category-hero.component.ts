@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './category-hero.component.html',
-  styleUrls: ['./category-hero.component.scss']
+  styleUrls: ['./category-hero.component.scss'],
 })
 export class CategoryHeroComponent {
-  constructor() { }
+  constructor() {}
 }

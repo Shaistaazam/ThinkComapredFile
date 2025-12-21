@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductCardComponent, Product } from '../../components/product-card/product-card.component';
+import {
+  Product,
+} from '../../components/product-card/product-card.component';
 import { HelpSectionComponent } from '../../components/help-section/help-section.component';
 import { BestSellersComponent } from '../../components/best-sellers/best-sellers.component';
 import { HotDealsComponent } from '../../components/hot-deals/hot-deals.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, ProductCardComponent, HelpSectionComponent, BestSellersComponent, HotDealsComponent],
+  imports: [
+    HelpSectionComponent,
+    BestSellersComponent,
+    HotDealsComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
   products: Product[] = [
     {
       id: 1,
@@ -21,7 +28,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick1.png',
-      rating: 4.5
+      rating: 4.5,
     },
     {
       id: 2,
@@ -29,7 +36,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick2.png',
-      rating: 4.2
+      rating: 4.2,
     },
     {
       id: 3,
@@ -37,7 +44,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick3.png',
-      rating: 4.0
+      rating: 4.0,
     },
     {
       id: 4,
@@ -45,7 +52,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick4.png',
-      rating: 4.7
+      rating: 4.7,
     },
     {
       id: 5,
@@ -53,7 +60,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick5.png',
-      rating: 4.5
+      rating: 4.5,
     },
     {
       id: 6,
@@ -61,7 +68,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick6.png',
-      rating: 4.3
+      rating: 4.3,
     },
     {
       id: 7,
@@ -69,7 +76,7 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick7.png',
-      rating: 4.6
+      rating: 4.6,
     },
     {
       id: 8,
@@ -77,11 +84,20 @@ export class HomeComponent {
       price: 275.97,
       description: 'IN STOCK',
       imageUrl: 'assets/images/pick8.png',
-      rating: 4.4
-    }
+      rating: 4.4,
+    },
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private services: ProductService
+  ) {}
+
+  ngOnInit() {
+    this.services.getProducts().subscribe((result) => {
+      console.log("Product :", result)
+    })
+  }
 
   navigateToCategories() {
     this.router.navigate(['/category']);

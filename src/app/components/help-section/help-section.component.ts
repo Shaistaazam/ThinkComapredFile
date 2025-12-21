@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './help-section.component.html',
-  styleUrls: ['./help-section.component.scss']
+  styleUrls: ['./help-section.component.scss'],
 })
 export class HelpSectionComponent {
-  constructor() { }
+  constructor() {}
 
   onSearchSubmit(event: Event) {
     event.preventDefault();

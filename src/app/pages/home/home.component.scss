@@ -11,7 +11,7 @@
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 151px;
-  background-color: #38149E08;
+  background-color: #38149e08;
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@
   display: inline-block;
   width: 100%;
   padding-bottom: 10px;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -44,13 +44,13 @@
     left: 0;
     width: 100%;
     height: 5px;
-    background-color: #3B82F6;
+    background-color: #3b82f6;
     border-radius: 2px;
   }
-  
+
   @media (max-width: 640px) {
     padding-bottom: 8px;
-    
+
     &::after {
       height: 4px;
     }
@@ -64,38 +64,38 @@
 // Illustration Hover Effects
 .illustration-hover-container {
   cursor: pointer;
-  
+
   &:hover {
     .illustration-wrapper {
       transform: scale(1.05);
     }
-    
+
     .illustration-outer-circle {
       transform: scale(1.02);
-      border-color: #FEB854;
+      border-color: #feb854;
       box-shadow: 0 0 20px rgba(254, 184, 84, 0.3);
     }
-    
+
     .illustration-yellow-circle {
       transform: scale(1.03);
       background-color: #ffc966;
       box-shadow: 0 0 15px rgba(254, 184, 84, 0.4);
     }
-    
+
     .category-box-hover {
-      background-color: #FEB854;
+      background-color: #feb854;
       border-color: #ff9800;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       z-index: 10;
       // Use scale property (separate from transform) for better compatibility
       scale: 1.15;
-      
+
       span {
         color: white;
         font-weight: 600;
       }
     }
-    
+
     .illustration-dot {
       // Use scale property (modern browsers) or fallback to transform
       scale: 1.5;
@@ -103,10 +103,10 @@
       box-shadow: 0 0 15px currentColor;
       animation: pulse-dot 1.5s ease-in-out infinite;
     }
-    
+
     .person-image-container {
       transform: translateX(-60%) scale(1.05);
-      
+
       img {
         transform: scale(1.08);
       }
@@ -116,7 +116,8 @@
 
 // Pulse animation for dots
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     scale: 1.5;
     transform: scale(1.5);
@@ -175,9 +176,8 @@
   }
 }
 
-
 .hot-deals-section {
-  background-color: #38149E08;
+  background-color: #38149e08;
   width: 100%;
   max-width: 1420px;
   margin: 0 auto;
@@ -186,7 +186,7 @@
   box-shadow: 0 4px 20px rgba(56, 20, 158, 0.08);
   position: relative;
   overflow: hidden;
-  
+
   // Decorative corner accent
   &::before {
     content: '';
@@ -199,7 +199,7 @@
     border-radius: 0 20px 0 100%;
     pointer-events: none;
   }
-  
+
   // Subtle pattern overlay
   &::after {
     content: '';
@@ -208,39 +208,36 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
+    background-image:
       radial-gradient(circle at 10% 20%, rgba(254, 184, 84, 0.05) 0%, transparent 50%),
       radial-gradient(circle at 90% 80%, rgba(56, 20, 158, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
-  
+
   @media (max-width: 1440px) {
     margin-left: 22px;
     margin-right: 22px;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 768px) {
     margin-left: 0;
     margin-right: 0;
     border-left: none;
     border-right: none;
     border-radius: 12px;
-    
+
     &::before {
       width: 80px;
       height: 80px;
       border-radius: 0 12px 0 80px;
     }
   }
-  
+
   .container {
     padding-bottom: 0;
     position: relative;
     z-index: 1;
   }
 }
-  
-
-
