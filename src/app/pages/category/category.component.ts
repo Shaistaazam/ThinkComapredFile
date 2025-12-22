@@ -14,6 +14,6 @@ export class CategoryComponent {
   constructor(private router: Router) {}
 
   goToProductList(category: string) {
-    this.router.navigate(['/products'], { queryParams: { category: category } });
+    this.router.navigate(['/category-next'], { queryParams: { category: category } });
   }
 }
