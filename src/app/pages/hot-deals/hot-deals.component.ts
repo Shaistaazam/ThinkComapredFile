@@ -8,6 +8,7 @@ import { FilterSidebarComponent } from '../../components/filter-sidebar/filter-s
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FloatingCompareButtonComponent } from '../../components/floating-compare-button/floating-compare-button.component';
 
 @Component({
   selector: 'app-hot-deals',
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     HotDealsProductCardComponent,
     FilterSidebarComponent,
     PaginationComponent,
+    FloatingCompareButtonComponent,
     NgFor,
     NgIf,
     FormsModule
@@ -132,6 +134,12 @@ export class HotDealsComponent implements OnInit {
     // TODO: Implement filter functionality
   }
 
+  onFiltersApplied(): void {
+    console.log('Filters applied button clicked in hot-deals component');
+    // Reload products when filters are applied
+    this.loadHotDealProducts(this.currentPage);
+  }
+
   onPageChange(page: number): void {
     this.currentPage = page;
     this.loadHotDealProducts(page);
@@ -143,4 +151,5 @@ export class HotDealsComponent implements OnInit {
     this.currentPage = 1; // Reset to first page when changing items per page
     this.loadHotDealProducts(1);
   }
+
 }
