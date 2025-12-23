@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ProductFiltersComponent } from '../../../components/product-filters/product-filters.component';
+import { FilterSidebarComponent } from '../../../components/filter-sidebar/filter-sidebar.component';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { HotDealsProductCardComponent } from '../../../components/hot-deals-product-card/hot-deals-product-card.component';
@@ -9,7 +10,7 @@ import { HotDealsProductCardComponent } from '../../../components/hot-deals-prod
 @Component({
   selector: 'app-category-next',
   standalone: true,
-  imports: [NgFor, NgIf, RouterModule, ProductFiltersComponent, HotDealsProductCardComponent],
+  imports: [NgFor, NgIf, RouterModule, FilterSidebarComponent, HotDealsProductCardComponent, FormsModule],
   templateUrl: './category-next.component.html',
   styleUrl: './category-next.component.scss',
 })
@@ -72,8 +73,7 @@ export class CategoryNextComponent implements OnInit {
   }
 
   onFiltersChanged(filters: any) {
-    // Handle filter changes
-    console.log('Filters changed on next page:', filters);
+    // TODO: Implement filter functionality
   }
   
   getCategoryDisplayName(): string {

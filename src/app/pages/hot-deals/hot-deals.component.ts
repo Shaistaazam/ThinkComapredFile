@@ -4,7 +4,7 @@ import { CategoryHeroComponent } from '../../components/category-hero/category-h
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { HotDealsProductCardComponent } from '../../components/hot-deals-product-card/hot-deals-product-card.component';
-import { ProductFiltersComponent } from '../../components/product-filters/product-filters.component';
+import { FilterSidebarComponent } from '../../components/filter-sidebar/filter-sidebar.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CategoryHeroComponent,
     HotDealsProductCardComponent,
-    ProductFiltersComponent,
+    FilterSidebarComponent,
     PaginationComponent,
     NgFor,
     NgIf,
@@ -32,6 +32,8 @@ export class HotDealsComponent implements OnInit {
   selectedItemsPerPage = 12; // Default items per page
   itemsPerPageOptions = [12, 24, 48, 96]; // Items per page options
   selectedCategoryId: number | undefined = undefined; // No filter by default to show all
+  selectedFilters: { [key: string]: string[] } = {}; // Selected filters
+  selectedSortOption: string = 'popular'; // Default sort option
   Math = Math; // Make Math available in template
   
   categories = [
@@ -127,8 +129,7 @@ export class HotDealsComponent implements OnInit {
 
   onFiltersChanged(filters: any): void {
     console.log('Filters changed:', filters);
-    // Reset to page 1 when filters change
-    this.loadHotDealProducts(1);
+    // TODO: Implement filter functionality
   }
 
   onPageChange(page: number): void {
