@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './best-sellers.component.html',
-  styleUrls: ['./best-sellers.component.scss']
+  styleUrls: ['./best-sellers.component.scss'],
 })
 export class BestSellersComponent {
-  constructor() { }
+  constructor() {}
 }

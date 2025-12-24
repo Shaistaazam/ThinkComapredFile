@@ -15,7 +15,7 @@ export interface Product {
   standalone: true,
   imports: [NgFor],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss'
+  styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
   @Input() product!: Product;

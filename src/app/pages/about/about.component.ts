@@ -5,8 +5,6 @@ import { CategoryHeroComponent } from '../../components/category-hero/category-h
   selector: 'app-about',
   imports: [CategoryHeroComponent],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.scss',
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}
