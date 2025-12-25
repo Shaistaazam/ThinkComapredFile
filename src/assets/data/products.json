@@ -1,0 +1,98 @@
+﻿// [
+//   {
+//     "id": 1,
+//     "name": "iPhone 14 Pro",
+//     "description": "Apple flagship smartphone with advanced camera system",
+//     "price": 999.99,
+//     "category": "mobile",
+//     "imageUrl": "https://images.unsplash.com/photo-1661961112951-fc8b8d4c1c7b",
+//     "rating": 4.8,
+//     "reviewsCount": 300,
+//     "isFeatured": true,
+//     "isNew": true
+//   },
+//   {
+//     "id": 2,
+//     "name": "HP Pavilion Laptop",
+//     "description": "Powerful laptop for work and study",
+//     "price": 1299.99,
+//     "category": "laptop",
+//     "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+//     "rating": 4.6,
+//     "reviewsCount": 120,
+//     "isFeatured": true,
+//     "isNew": false
+//   },
+//   {
+//     "id": 3,
+//     "name": "Samsung Galaxy Watch",
+//     "description": "Smartwatch with health monitoring features",
+//     "price": 299.99,
+//     "category": "wearable",
+//     "imageUrl": "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
+//     "rating": 4.4,
+//     "reviewsCount": 85,
+//     "isFeatured": false,
+//     "isNew": true
+//   },
+//   {
+//     "id": 4,
+//     "name": "Wireless Headphones",
+//     "description": "High-quality wireless headphones with noise cancellation",
+//     "price": 149.99,
+//     "category": "audio",
+//     "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+//     "rating": 4.3,
+//     "reviewsCount": 210,
+//     "isFeatured": true,
+//     "isNew": false
+//   },
+//   {
+//     "id": 5,
+//     "name": "Gaming Mouse",
+//     "description": "Ergonomic gaming mouse with customizable buttons",
+//     "price": 79.99,
+//     "category": "accessories",
+//     "imageUrl": "https://images.unsplash.com/photo-1613141412501-9012977f1969",
+//     "rating": 4.7,
+//     "reviewsCount": 180,
+//     "isFeatured": false,
+//     "isNew": true
+//   },
+//   {
+//     "id": 6,
+//     "name": "Bluetooth Speaker",
+//     "description": "Portable Bluetooth speaker with excellent sound quality",
+//     "price": 89.99,
+//     "category": "audio",
+//     "imageUrl": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
+//     "rating": 4.2,
+//     "reviewsCount": 95,
+//     "isFeatured": true,
+//     "isNew": false
+//   },
+//   {
+//     "id": 7,
+//     "name": "Smart Watch Series 5",
+//     "description": "Feature-rich smartwatch with health monitoring",
+//     "price": 399.99,
+//     "category": "wearable",
+//     "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+//     "rating": 4.5,
+//     "reviewsCount": 140,
+//     "isFeatured": true,
+//     "isNew": true
+//   },
+//   {
+//     "id": 8,
+//     "name": "Mechanical Keyboard",
+//     "description": "RGB mechanical keyboard with programmable keys",
+//     "price": 119.99,
+//     "category": "accessories",
+//     "imageUrl": "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
+//     "rating": 4.6,
+//     "reviewsCount": 165,
+//     "isFeatured": false,
+//     "isNew": false
+//   }
+// ]

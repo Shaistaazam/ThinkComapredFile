@@ -69,13 +69,36 @@ export class ComparisonComponent implements OnInit {
   
   loadHotDealProducts(pageNo: number = 1): void {
     this.loading = true;
-    this.currentPage = pageNo;
-      
-    // Call the API to get items with current category filter and selected items per page
-    this.productService.getHotDealsItems(pageNo, this.selectedItemsPerPage, this.selectedCategoryId).subscribe({
-      next: (result: {products: Product[], pagination: {pageNo: number, perPage: number, totalItems: number, selectedItems: number}}) => {
-        this.products = result.products;
-        this.pagination = result.pagination;
+    
+    this.productService.getProducts().subscribe({
+      next: (products: Product[]) => {
+        // Filter by category if selected
+        if (this.selectedCategoryId !== undefined) {
+          const categoryMap: { [key: number]: string } = {
+            22: 'laptop',
+            23: 'audio', // Assuming monitors might be under audio or electronics
+            24: 'electronics',
+            3: 'mobile'
+          };
+          const category = categoryMap[this.selectedCategoryId];
+          if (category) {
+            products = products.filter(p => p.category.toLowerCase().includes(category));
+          }
+        }
+        
+        // Simple pagination based on the current page
+        const startIndex = (pageNo - 1) * this.selectedItemsPerPage;
+        const endIndex = startIndex + this.selectedItemsPerPage;
+        this.products = products.slice(startIndex, endIndex);
+        
+        // Create a simple pagination object
+        this.pagination = {
+          pageNo: pageNo,
+          perPage: this.selectedItemsPerPage,
+          totalItems: products.length,
+          selectedItems: this.products.length
+        };
+        
         this.loading = false;
         console.log('Hot deal products loaded:', this.products);
         console.log('Pagination:', this.pagination);

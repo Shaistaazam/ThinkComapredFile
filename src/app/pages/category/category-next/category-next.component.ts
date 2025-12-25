@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ export class CategoryNextComponent implements OnInit {
   products: Product[] = [];
   selectedCategory: string = '';
   isLoading: boolean = false;
-  
+
   // Map category names to API category IDs
   private categoryMapping: { [key: string]: number } = {
     'laptops': 22,
@@ -26,7 +26,7 @@ export class CategoryNextComponent implements OnInit {
     'desktops': 24,
     'monitors': 23
   };
-  
+
   // Map category names to display names
   private categoryDisplayNames: { [key: string]: string } = {
     'laptops': 'Laptops',
@@ -51,22 +51,55 @@ export class CategoryNextComponent implements OnInit {
 
   loadProductsFromAPI() {
     this.isLoading = true;
-    
+
     // Get category ID from mapping, or undefined for all categories
     const categoryId = this.selectedCategory ? this.categoryMapping[this.selectedCategory] : undefined;
     const categoryName = this.selectedCategory ? this.categoryDisplayNames[this.selectedCategory] : 'All';
     
     console.log(`Fetching products for category: ${this.selectedCategory} (ID: ${categoryId})`);
     
-    // Using the hot deals method to fetch products from API with category filter
-    this.productService.getHotDealsItems(1, 20, categoryId).subscribe(
-      response => {
-        this.products = response.products;
+    // Using the getProducts method to fetch products from local JSON
+    this.productService.getProducts().subscribe(
+      (products: Product[]) => {
+        // Filter by category if selected
+        if (this.selectedCategory) {
+          // Define the correct category mapping for filtering
+          const categoryMap: { [key: number]: string } = {
+            22: 'laptop',
+            23: 'audio',
+            24: 'laptop',
+            3: 'mobile'
+          };
+          
+          // Determine the actual category to filter by based on the selected category
+          let filterCategory: string | undefined;
+          switch (categoryId) {
+            case 22: // 'laptops' -> 'laptop'
+              filterCategory = 'laptop';
+              break;
+            case 23: // 'monitors' -> 'audio'
+              filterCategory = 'audio';
+              break;
+            case 24: // 'desktops' -> 'laptop'
+              filterCategory = 'laptop';
+              break;
+            case 3: // 'mobile-phones' -> 'mobile'
+              filterCategory = 'mobile';
+              break;
+          }
+          
+          if (filterCategory) {
+            products = products.filter(p => p.category.toLowerCase().includes(filterCategory));
+          }
+
+        }
+        
+        this.products = products;
         this.isLoading = false;
-        console.log(`Loaded ${response.products.length} products for category: ${categoryName}`);
+        console.log(`Loaded ${this.products.length} products for category: ${categoryName}`);
       },
-      error => {
-        console.error('Error loading products from API:', error);
+      (error: any) => {
+        console.error('Error loading products from JSON:', error);
         this.isLoading = false;
       }
     );
@@ -75,7 +108,7 @@ export class CategoryNextComponent implements OnInit {
   onFiltersChanged(filters: any) {
     // TODO: Implement filter functionality
   }
-  
+
   getCategoryDisplayName(): string {
     if (this.selectedCategory && this.categoryDisplayNames[this.selectedCategory]) {
       return this.categoryDisplayNames[this.selectedCategory];
