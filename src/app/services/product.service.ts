@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, catchError, map } from 'rxjs';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -79,8 +80,13 @@ export class ProductService {
   ];
 
   getProducts(): Observable<Product[]> {
+    if (environment.useLocalData) {
+      // Use local data when environment is configured to do so
+      return of(this.products);
+    }
+    
     // Using API data with local data as fallback
-    return this.http.get<any>("https://api.thinkcompared.com/getItems").pipe(
+    return this.http.get<any>(`${environment.apiUrl}/getItems`).pipe(
       map(response => {
         if (response && response.response && response.response.data && response.response.data.data) {
           // Map API response to Product model
@@ -129,6 +135,25 @@ export class ProductService {
   }
 
   getHotDealsItems(pageNo: number = 1, perPage: number = 12, categoryId?: number): Observable<{products: Product[], pagination: {pageNo: number, perPage: number, totalItems: number, selectedItems: number}}> {
+    if (environment.useLocalData) {
+      // Use local data when environment is configured to do so
+      const totalItems = this.products.length;
+      const startIndex = (pageNo - 1) * perPage;
+      const endIndex = startIndex + perPage;
+      const selectedItems = Math.min(perPage, totalItems - startIndex);
+      const paginatedProducts = this.products.slice(startIndex, endIndex);
+      
+      return of({
+        products: paginatedProducts,
+        pagination: {
+          pageNo: pageNo,
+          perPage: perPage,
+          totalItems: totalItems,
+          selectedItems: selectedItems
+        }
+      });
+    }
+    
     // Build query parameters
     let params: any = {
       pageNo: pageNo,
@@ -140,7 +165,7 @@ export class ProductService {
     }
     
     // Using API data with local data as fallback
-    return this.http.get<any>("https://api.thinkcompared.com/getItems", { params }).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/getItems`, { params }).pipe(
       map(response => {
         if (response && response.response && response.response.data && response.response.data.data) {
           // Debug API response

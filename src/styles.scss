@@ -1,28 +1,69 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define CSS variables for the color scheme */
+:root {
+  --primary-color: #4F46E5;      /* Buttons, Active Links (Indigo) */
+  --secondary-color: #7C3AED;   /* Accents, Hot Deals (Violet) */
+  --background-color: #F8FAFC;  /* Light Mode Page Body */
+  --dark-text-color: #1E293B;   /* Main Headings */
+  --sale-price-color: #DC2626;  /* Price drops and alerts */
+}
 
 /* Global font: Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 body {
-  font-family:
-    'Poppins',
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  color: var(--dark-text-color);
 }
 
 .font-poppins {
-  font-family:
-    'Poppins',
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Apply primary color to buttons */
+.btn-primary,
+button,
+[type='button'],
+[type='submit'],
+[type='reset'],
+.bg-orange-500 {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover,
+button:hover,
+[type='button']:hover,
+[type='submit']:hover,
+[type='reset']:hover {
+  background-color: #4338CA !important; /* Darker shade of primary */
+}
+
+/* Apply secondary color to hot deals */
+.hot-deals,
+.secondary-color,
+.text-orange-500 {
+  color: var(--secondary-color) !important;
+}
+
+.bg-violet-500 {
+  background-color: var(--secondary-color) !important;
+}
+
+/* Apply dark text color to headings */
+h1, h2, h3, h4, h5, h6,
+.text-gray-900 {
+  color: var(--dark-text-color) !important;
+}
+
+/* Apply sale/price color */
+.text-red-500,
+.sale-price,
+.price-drop {
+  color: var(--sale-price-color) !important;
 }
 
 /* Temporary styles to verify the application is working */
@@ -47,7 +88,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #007bff;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
